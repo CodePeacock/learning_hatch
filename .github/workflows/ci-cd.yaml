@@ -8,7 +8,8 @@ on:
   pull_request:
     branches:
       - main
-
+    tags:
+      - "*"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -51,7 +52,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/download-artifact@v4
         with:
           name: article-improver-dist
           path: article-improver-dist
